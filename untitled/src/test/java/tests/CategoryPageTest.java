@@ -16,7 +16,7 @@ public class CategoryPageTest extends BasePage {
 
     @BeforeClass
     public static void beforeClass() {
-        new BasePage(driver).initDriver();
+        new BasePage
     }
 
     @AfterClass

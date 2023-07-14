@@ -26,20 +26,24 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebDriver initDriver(URL) {
+    public WebDriver initDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(URL);
         return driver;
     }
+
+    public void goToURL(WebDriver driver, String URL){
+        driver.get(URL);
+    }
+
 
     public WebDriver closeDriver() {
         driver.quit();
         return null;
     }
 
-    private CategoryPage successLoginToPlatform(userName, userPassword) {
+    private CategoryPage successLoginToPlatform(String userName, String userPassword) {
         inputValue(loginField, userName);
         inputValue(passwordField, userPassword);
         return new CategoryPage(driver);

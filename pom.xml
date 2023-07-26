@@ -12,6 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+      <maven.compiler.target>1.8</maven.compiler.target>
+      <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 
   <dependencies>
@@ -37,6 +40,31 @@
       <groupId>io.github.bonigarcia</groupId>
       <artifactId>webdrivermanager</artifactId>
       <version>5.3.2</version>
+    </dependency>
+      <dependency>
+          <groupId>io.devcon5</groupId>
+          <artifactId>pageobjects</artifactId>
+          <version>0.3.1</version>
+      </dependency>
+    <dependency>
+      <groupId>io.tourniquet.junit</groupId>
+      <artifactId>tourniquet-pageobjects</artifactId>
+      <version>0.4.8</version>
+    </dependency>
+    <dependency>
+      <groupId>de.lgohlke.selenium</groupId>
+      <artifactId>pageobjects</artifactId>
+      <version>0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.pageobject</groupId>
+      <artifactId>core_2.12</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>cc.ricecx</groupId>
+      <artifactId>logsnag4j</artifactId>
+      <version>1.1</version>
     </dependency>
 
   </dependencies>

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CategoryPage extends BasePage{
-
     private WebDriver driver;
 
     public CategoryPage(WebDriver driver) {
@@ -18,16 +17,22 @@ public class CategoryPage extends BasePage{
     }
     @FindBy(id="inventory_container")
     private WebElement productsPage;
-
     @FindBy(className = "app_logo")
     private WebElement appLogo;
-
     @FindBy(className = "shopping_cart_link")
     private WebElement shoppingCartLink;
-
     @FindBy(css = ".inventory_item")
     private WebElement itemCart;
+    @FindBy(id="react-burger-menu-btn")
+    private WebElement burgerMenu;
 
+    public CategoryPage checkElementOnPage(){
+        productsPage.isDisplayed();
+        appLogo.isDisplayed();
+        shoppingCartLink.isDisplayed();
+        burgerMenu.isDisplayed();
+        return this;
+    }
 
 
 

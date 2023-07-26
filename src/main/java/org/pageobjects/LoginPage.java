@@ -5,13 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends BasePage{
     private WebDriver driver;
+    private String userName = "standard_user";
+    private String userPassword = "secret_sauce";
 
-    public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(id="user-name")
     private WebElement loginName;
@@ -25,6 +23,10 @@ public class LoginPage {
     @FindBy(id="inventory_container")
     private WebElement productsPage;
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
     public CategoryPage login(String userName, String userPassword) {
         loginName.sendKeys(userName);
         loginPassword.sendKeys(userPassword);
@@ -37,5 +39,11 @@ public class LoginPage {
         return new CategoryPage(driver);
     }
 
+    public String getUserName() {
+        return userName;
+    }
 
+    public String getUserPassword() {
+        return userPassword;
+    }
 }

@@ -15,7 +15,7 @@ public class CategoryPage extends BasePage{
     public CategoryPage(WebDriver driver) {
        super(driver);
     }
-    @FindBy(id="inventory_container")
+    @FindBy(id = "inventory_container")
     private WebElement productsPage;
     @FindBy(className = "app_logo")
     private WebElement appLogo;

@@ -5,29 +5,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage{
+public class LoginPage{
     private WebDriver driver;
     private String userName = "standard_user";
     private String userPassword = "secret_sauce";
-
-
     @FindBy(id="user-name")
-    private WebElement loginName;
-
-    @FindBy(id="password")
+    public WebElement loginName;
+    @FindBy(id = "password")
     private WebElement loginPassword;
-
-    @FindBy(id="login-button")
+    @FindBy(id = "login-button")
     private WebElement loginBTN;
-
-    @FindBy(id="inventory_container")
+    @FindBy(id = "inventory_container")
     private WebElement productsPage;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public CategoryPage login(String userName, String userPassword) {
+    public CategoryPage loginUserToPlatform() {
         loginName.sendKeys(userName);
         loginPassword.sendKeys(userPassword);
         loginBTN.click();

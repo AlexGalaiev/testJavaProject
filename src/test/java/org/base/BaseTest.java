@@ -16,19 +16,21 @@ public class BaseTest{
     @BeforeSuite(alwaysRun = true)
     public void beforeSuit() {
         driver = WebDriverFactory.getDriver(WebDriverType.FIREFOX_DRIVER);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUserToPlatform()
-                .waitElementOnPage()
-                .checkElementsDownloaded();
     }
 
-    @AfterSuite(alwaysRun = true)
+    @BeforeSuite()
     public void afterSuit() {
         driver.quit();
     }
 
     public static void goToUrl(String URL) {
         driver.get(URL);
+    }
+
+    public static void successLoginUserToPlatform() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginUserToPlatform()
+                .waitElementOnPage();
     }
 
 }

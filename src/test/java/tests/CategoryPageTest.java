@@ -6,34 +6,34 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.pageobjects.CategoryPage;
 import org.pageobjects.LoginPage;
 
 
 public class CategoryPageTest extends BaseTest {
-//    private static String URL = "https://www.saucedemo.com/";
+    private static String ITEM_NAME = "Sauce Labs Backpack";
+    private static String ITEM_PRICE = "$29.99";
 
     @BeforeClass
     public static void beforeClass() {
         goToUrl(ApplicationConstans.APP_URL);
+        successLoginUserToPlatform();
     }
-
     @AfterClass
     public static void afterClass() {
         driver.quit();
     }
 
-    // Проверка что юзер залогинился и увидел элементы на странице
-//    @Test
-//    public void categoryPageTest() {
-//            Assert.assertTrue(new LoginPage(driver)
-//                    .loginUserToPlatform()
-//                    .waitElementOnPage()
-//                    .checkElementsDownloaded());
-//    }
-// проверка товара на странице
     @Test
     public void productCardPageParametersTest() {
-
+        CategoryPage categoryPage = new CategoryPage(driver);
+        categoryPage.waitElementOnPage();
+        //check item photo
+        Assert.assertTrue(categoryPage.checkElementsDownloaded(categoryPage.getItemPicture()));
+        //check item name
+        Assert.assertArrayEquals("Name is correct", ITEM_NAME.toCharArray(), categoryPage.getElementArrayText(categoryPage.itemTitle));
+        //check item price
+        Assert.assertArrayEquals(ITEM_PRICE.toCharArray(), categoryPage.getElementArrayText(categoryPage.itemPrice));
     }
 
 }

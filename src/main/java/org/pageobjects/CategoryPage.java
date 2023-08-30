@@ -1,6 +1,5 @@
 package org.pageobjects;
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,16 +19,20 @@ public class CategoryPage{
     @FindBy(id = "inventory_container")
     private WebElement productsPage;
     @FindBy(className = "app_logo")
-    private WebElement brandLogo;
+    private WebElement shopName;
     @FindBy(id="react-burger-menu-btn")
-    private WebElement burgerMenu;
+    private WebElement burgerMenuCategory;
     @FindBy(id = "item_4_img_link")
-    private WebElement item;
+    private WebElement itemPicture;
     @FindBy(xpath = "//*[@id='item_4_img_link']/../..")
     private WebElement itemCard;
-
     @FindBy(id="add-to-cart-sauce-labs-backpack")
     private WebElement itemAddToBasketBTN;
+    @FindBy(id="item_4_title_link")
+    public WebElement itemTitle;
+
+    @FindBy(xpath = "*//div[@class='inventory_item_price'][1]")
+    public WebElement itemPrice;
 
     public CategoryPage waitElementOnPage() {
         new WebDriverWait(driver, Duration.ofSeconds(1))
@@ -37,9 +40,22 @@ public class CategoryPage{
         return new CategoryPage(driver);
     }
 
-    public boolean checkElementsDownloaded() {
-        return item.isDisplayed();
+    public boolean checkElementsDownloaded(WebElement element) {
+        return element.isDisplayed();
     }
+
+    public String getElementText(WebElement element) {
+        return element.getText();
+    }
+    public char[] getElementArrayText(WebElement element) {
+        return element.getText().toCharArray();
+    }
+
+    public WebElement getItemPicture() {
+        return itemPicture;
+    }
+
+
 
 }
 

@@ -1,16 +1,15 @@
 package org.pageobjects;
 
+import constans.ApplicationConstans;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage{
+public class LoginPage {
     private WebDriver driver;
-    private String userName = "standard_user";
-    private String userPassword = "secret_sauce";
     @FindBy(id="user-name")
-    public WebElement loginName;
+    private WebElement loginName;
     @FindBy(id = "password")
     private WebElement loginPassword;
     @FindBy(id = "login-button")
@@ -24,8 +23,8 @@ public class LoginPage{
     }
 
     public CategoryPage loginUserToPlatform() {
-        loginName.sendKeys(userName);
-        loginPassword.sendKeys(userPassword);
+        loginName.sendKeys(ApplicationConstans.LOGIN_NAME);
+        loginPassword.sendKeys(ApplicationConstans.LOGIN_PASSWORD);
         loginBTN.click();
         return new CategoryPage(driver);
     }
@@ -35,11 +34,4 @@ public class LoginPage{
         return new CategoryPage(driver);
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
 }

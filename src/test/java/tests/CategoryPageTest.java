@@ -1,26 +1,20 @@
 package tests;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import constans.ApplicationConstans;
+import org.base.BaseTest;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.pageobjects.BasePage;
-import org.pageobjects.CategoryPage;
 import org.pageobjects.LoginPage;
 
 
-public class CategoryPageTest {
-    static WebDriver driver;
+public class CategoryPageTest extends BaseTest {
+//    private static String URL = "https://www.saucedemo.com/";
+
     @BeforeClass
     public static void beforeClass() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        goToUrl(ApplicationConstans.APP_URL);
     }
 
     @AfterClass
@@ -28,9 +22,18 @@ public class CategoryPageTest {
         driver.quit();
     }
 
+    // Проверка что юзер залогинился и увидел элементы на странице
+//    @Test
+//    public void categoryPageTest() {
+//            Assert.assertTrue(new LoginPage(driver)
+//                    .loginUserToPlatform()
+//                    .waitElementOnPage()
+//                    .checkElementsDownloaded());
+//    }
+// проверка товара на странице
     @Test
-    public void categoryPageTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUserToPlatform();
+    public void productCardPageParametersTest() {
+
     }
+
 }

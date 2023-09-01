@@ -1,11 +1,10 @@
 package org.base;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.pageobjects.BasePage;
 import org.pageobjects.LoginPage;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import webdriver.WebDriverFactory;
 import webdriver.WebDriverType;
@@ -31,6 +30,12 @@ public class BaseTest{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.loginUserToPlatform()
                 .waitElementOnPage();
+    }
+    public static void checkCorrectTextOnPage(String correctText, BasePage basepage, WebElement webElement) {
+        Assert.assertArrayEquals(correctText.toCharArray(), basepage.getElementArrayText(webElement));
+    }
+    public static void checkIsElementDisplayed(WebElement element){
+        Assert.assertTrue(element.isDisplayed());
     }
 
 }

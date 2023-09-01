@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.pageobjects.CategoryPage;
+import org.pageobjects.ChechoutPage;
 import org.pageobjects.LoginPage;
 
 
@@ -25,7 +26,7 @@ public class CategoryPageTest extends BaseTest {
     @Test
     public void productCardPageParametersTest() {
         CategoryPage categoryPage = new CategoryPage(driver);
-        categoryPage.waitElementOnPage();
+        categoryPage.waitCheckoutPage();
         //check item photo
         Assert.assertTrue(categoryPage.elementIsDisplayed(categoryPage.itemPicture));
         //check item name
@@ -37,6 +38,7 @@ public class CategoryPageTest extends BaseTest {
         Assert.assertArrayEquals(
                 ApplicationLocalization.PRODUCT_PRICE.toCharArray(),
                 categoryPage.getElementArrayText(categoryPage.itemPrice));
+
     }
 
 }

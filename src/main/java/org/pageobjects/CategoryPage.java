@@ -4,10 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CategoryPage extends BasePage{
 
@@ -34,11 +30,9 @@ public class CategoryPage extends BasePage{
     public WebElement clickRemoveBtn;
     @FindBy(id="shopping_cart_container")
     public WebElement headerBusketIcon;
-        private String removeBtn = "Remove";
+    private String removeBtn = "Remove";
 
-    public CategoryPage waitElementOnPage() {
-        new WebDriverWait(driver, Duration.ofSeconds(1))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.id("inventory_container")));
+    public CategoryPage waitCheckoutPage() {
         return new CategoryPage(driver);
     }
 
@@ -47,5 +41,9 @@ public class CategoryPage extends BasePage{
         return new CategoryPage(driver);
     }
 
+    public ChechoutPage clickHeaderBusketIcon() {
+        headerBusketIcon.click();
+        return new ChechoutPage(driver);
+    }
 }
 

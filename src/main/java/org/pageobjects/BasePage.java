@@ -19,9 +19,6 @@ public class BasePage {
     public boolean checkElementsDownloaded(WebElement element) {
         return element.isDisplayed();
     }
-    public String getElementText(WebElement element) {
-        return element.getText();
-    }
     public char[] getElementArrayText(WebElement element) {
         return element.getText().toCharArray();
     }
@@ -34,12 +31,11 @@ public class BasePage {
                 .until(ExpectedConditions.visibilityOf(elementToWait));
     }
     public void waitElementDissapear(WebElement elementToWait){
-
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.invisibilityOf(elementToWait));
     }
-    public void clickBtn(WebElement element){
-        element.click();
+    public void typeTextToElement(WebElement element, String text) {
+        element.sendKeys(text);
     }
-
-
 }
 

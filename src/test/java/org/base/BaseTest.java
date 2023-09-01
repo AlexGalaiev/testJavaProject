@@ -27,15 +27,8 @@ public class BaseTest{
     }
 
     public static void successLoginUserToPlatform() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.loginUserToPlatform()
-                .waitElementOnPage();
-    }
-    public static void checkCorrectTextOnPage(String correctText, BasePage basepage, WebElement webElement) {
-        Assert.assertArrayEquals(correctText.toCharArray(), basepage.getElementArrayText(webElement));
-    }
-    public static void checkIsElementDisplayed(WebElement element){
-        Assert.assertTrue(element.isDisplayed());
+        new LoginPage(driver)
+                .loginUserToPlatform();
     }
 
 }

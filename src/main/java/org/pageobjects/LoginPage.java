@@ -26,10 +26,4 @@ public class LoginPage extends BasePage{
         loginBTN.click();
         return new CategoryPage(driver);
     }
-
-    public CategoryPage waitProductsPage() {
-        productsPage.isDisplayed();
-        return new CategoryPage(driver);
-    }
-
 }

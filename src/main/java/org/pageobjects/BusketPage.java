@@ -22,6 +22,8 @@ public class BusketPage extends BasePage{
     private WebElement errorValidationMSG;
     @FindBy(id = "continue")
     private WebElement continueBtn;
+    @FindBy(id = "finish")
+    private WebElement finishBtn;
 
     public BusketPage inputUserCreds() {
         firstName.sendKeys(ApplicationLocalization.TEST_VALUE);
@@ -29,8 +31,12 @@ public class BusketPage extends BasePage{
         zipCode.sendKeys(ApplicationLocalization.TEST_VALUE);
         return new BusketPage(driver);
     }
-    public BusketPage clickCheckoutBtn(){
+    public BusketPage clickContinueBtn(){
         continueBtn.click();
+        return new BusketPage(driver);
+    }
+    public BusketPage clickFinishBtn(){
+        finishBtn.click();
         return new BusketPage(driver);
     }
 

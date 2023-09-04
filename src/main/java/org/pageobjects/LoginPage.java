@@ -13,8 +13,6 @@ public class LoginPage extends BasePage{
     private WebElement loginPassword;
     @FindBy(id = "login-button")
     private WebElement loginBTN;
-    @FindBy(id = "inventory_container")
-    private WebElement productsPage;
 
     public LoginPage(WebDriver driver) {
         super(driver);

@@ -7,4 +7,5 @@ public class ApplicationLocalization {
     public static final String SHIPPING_INFORMATION = "Shipping Information";
     public static final String SHIPPING_ADDRESS = "Free Pony Express Delivery!";
     public static final String TOTAL_PRICE = "Total: $32.39";
+    public static final String THANKYOUPAGE_THANKS_ORDER_TEXT = "Thank you for your order!";
 }

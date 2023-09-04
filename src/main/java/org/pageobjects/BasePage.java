@@ -34,8 +34,13 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(2))
                 .until(ExpectedConditions.invisibilityOf(elementToWait));
     }
-    public void typeTextToElement(WebElement element, String text) {
-        element.sendKeys(text);
+    public WebElement findElementById(String elementID) {
+        WebElement element = driver.findElement(By.id(elementID));
+        return element;
+    }
+    public WebElement findElementByClass(String elementClass){
+        WebElement element = driver.findElement(By.className(elementClass));
+        return element;
     }
 }
 

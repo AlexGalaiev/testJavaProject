@@ -1,5 +1,6 @@
 package tests;
 
+import constans.ApplicationCommonElements;
 import constans.ApplicationConstans;
 import constans.ApplicationLocalization;
 import org.base.BaseTest;
@@ -7,10 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.pageobjects.BusketPage;
-import org.pageobjects.BusketPageStepTwoPage;
-import org.pageobjects.CategoryPage;
-import org.pageobjects.ChechoutPage;
+import org.pageobjects.*;
 
 public class ProductBusketTest extends BaseTest {
 
@@ -35,14 +33,17 @@ public class ProductBusketTest extends BaseTest {
         Assert.assertArrayEquals(
                 removeBtn.toCharArray(),
                 productCard.clickRemoveBtn.getText().toCharArray());
+
         //go to checkout page
         ChechoutPage chechoutPage = new ChechoutPage(driver);
         chechoutPage.clickHeaderBusketBtn();
+
         //check correct texts on checkout page
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_NAME.toCharArray(),
-                chechoutPage.itemName.getText().toCharArray());
+                chechoutPage.findElementById(ApplicationCommonElements.ITEM_NAME).getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_PRICE.toCharArray(),
-                chechoutPage.itemPrice.getText().toCharArray());
+                chechoutPage.findElementById(ApplicationCommonElements.ITEM_PRICE).getText().toCharArray());
+
         //check remove btn
         new ChechoutPage(driver)
                 .clickRemoveProductFromCheckout();
@@ -56,7 +57,7 @@ public class ProductBusketTest extends BaseTest {
                 .clickCheckoutBtn();
         new BusketPage(driver)
                 .inputUserCreds()
-                .clickCheckoutBtn();
+                .clickContinueBtn();
         BusketPageStepTwoPage deliveryInfo = new BusketPageStepTwoPage(driver);
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_NAME.toCharArray(),
                 deliveryInfo.getItemTitle().getText().toCharArray());
@@ -66,6 +67,28 @@ public class ProductBusketTest extends BaseTest {
                 deliveryInfo.shippingAdress.getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.TOTAL_PRICE.toCharArray(),
                 deliveryInfo.priceTotal.getText().toCharArray());
+    }
+
+    @Test
+    public void thankYouPageTest() {
+        new CategoryPage(driver)
+                .clickAddBtn()
+                .clickHeaderBusketIcon()
+                .clickCheckoutBtn();
+        new BusketPage(driver)
+                .inputUserCreds()
+                .clickContinueBtn()
+                .clickFinishBtn();
+        ThankyouPage tYPage = new ThankyouPage(driver);
+        tYPage.findElementById(ApplicationCommonElements.THANK_YOU_PAGE);
+        Assert.assertTrue(tYPage.thankYouPicture.isDisplayed());
+        Assert.assertArrayEquals(
+                ApplicationLocalization.THANKYOUPAGE_THANKS_ORDER_TEXT.toCharArray(),
+                tYPage.thankYouText.getText().toCharArray());
+        tYPage.clickBackToMainPageBtn();
+        Assert.assertTrue(tYPage.findElementById(ApplicationCommonElements.CATEGORY_PAGE).isDisplayed());
+
+
     }
 
 }

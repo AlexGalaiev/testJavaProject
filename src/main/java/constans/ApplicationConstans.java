@@ -7,4 +7,6 @@ public class ApplicationConstans {
     public static final String LOCKED_USER_NAME = "locked_out_user";
     public static final String PROBLEM_USER = "problem_user";
     public static final String PERFOMANCE_USER = "performance_glitch_user";
+    public static final String EXTERNAL_SITE_LINK = "https://saucelabs.com/";
+    public static final String TWITTER_SWITCH = "https://twitter.com/saucelabs";
 }

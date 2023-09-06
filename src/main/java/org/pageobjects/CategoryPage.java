@@ -10,8 +10,6 @@ public class CategoryPage extends BasePage{
     public CategoryPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "item_4_img_link")
-    public WebElement itemPicture;
     @FindBy(id="add-to-cart-sauce-labs-backpack")
     public WebElement itemAddToBasketBTN;
     @FindBy(xpath = "*//div[@class='inventory_item_price'][1]")

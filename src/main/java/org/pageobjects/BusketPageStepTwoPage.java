@@ -10,17 +10,6 @@ public class BusketPageStepTwoPage extends BasePage{
         super(driver);
     }
 
-    public WebElement getItemTitle() {
-        return itemTitle;
-    }
-    @FindBy(id="item_4_title_link")
-    private WebElement itemTitle;
-    @FindBy(className = "inventory_item_price")
-    private WebElement itemPrice;
-
-    public WebElement getItemPrice() {
-        return itemPrice;
-    }
     @FindBy(xpath = "*//div[@class='summary_info_label'][2]")
     public WebElement shippingInfo;
     @FindBy(xpath = "*//div[@class='summary_value_label'][2]")

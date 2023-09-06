@@ -34,17 +34,14 @@ public class ProductBusketTest extends BaseTest {
                 removeBtn.toCharArray(),
                 productCard.clickRemoveBtn.getText().toCharArray());
 
-        //go to checkout page
         ChechoutPage chechoutPage = new ChechoutPage(driver);
         chechoutPage.clickHeaderBusketBtn();
 
-        //check correct texts on checkout page
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_NAME.toCharArray(),
                 chechoutPage.findElementById(ApplicationCommonElements.ITEM_NAME).getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_PRICE.toCharArray(),
                 chechoutPage.findElementById(ApplicationCommonElements.ITEM_PRICE).getText().toCharArray());
 
-        //check remove btn
         new ChechoutPage(driver)
                 .clickRemoveProductFromCheckout();
     }
@@ -60,9 +57,9 @@ public class ProductBusketTest extends BaseTest {
                 .clickContinueBtn();
         BusketPageStepTwoPage deliveryInfo = new BusketPageStepTwoPage(driver);
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_NAME.toCharArray(),
-                deliveryInfo.getItemTitle().getText().toCharArray());
+                deliveryInfo.findElementById(ApplicationCommonElements.ITEM_NAME).getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.PRODUCT_PRICE.toCharArray(),
-                deliveryInfo.getItemPrice().getText().toCharArray());
+                deliveryInfo.findElementByClass(ApplicationCommonElements.ITEM_PRICE).getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.SHIPPING_ADDRESS.toCharArray(),
                 deliveryInfo.shippingAdress.getText().toCharArray());
         Assert.assertArrayEquals(ApplicationLocalization.TOTAL_PRICE.toCharArray(),

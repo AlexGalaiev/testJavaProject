@@ -10,8 +10,6 @@ public class BusketPage extends BasePage{
     public BusketPage(WebDriver driver) {
         super(driver);
     }
-    @FindBy(id = "checkout_info_container")
-    private WebElement infoCheckoutPage;
     @FindBy(id = "first-name")
     public WebElement firstName;
     @FindBy(id = "last-name")

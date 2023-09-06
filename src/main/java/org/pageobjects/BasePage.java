@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ScriptTimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.pageobject.core.page.PageObject;
 
 import java.time.Duration;
 
@@ -15,9 +17,6 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-    }
-    public boolean checkElementsDownloaded(WebElement element) {
-        return element.isDisplayed();
     }
     public char[] getElementArrayText(WebElement element) {
         return element.getText().toCharArray();
@@ -42,5 +41,10 @@ public class BasePage {
         WebElement element = driver.findElement(By.className(elementClass));
         return element;
     }
+    public void scrollScrinToElement(WebElement elementToscroll) {
+        Actions actions = new Actions(driver);
+        actions.scrollToElement(elementToscroll);
+    }
+
 }
 

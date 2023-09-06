@@ -1,5 +1,6 @@
 package tests;
 
+import constans.ApplicationCommonElements;
 import constans.ApplicationConstans;
 import constans.ApplicationLocalization;
 import org.base.BaseTest;
@@ -8,9 +9,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.pageobjects.CategoryPage;
-import org.pageobjects.ChechoutPage;
-import org.pageobjects.LoginPage;
-
 
 public class CategoryPageTest extends BaseTest {
     @BeforeClass
@@ -28,16 +26,16 @@ public class CategoryPageTest extends BaseTest {
         CategoryPage categoryPage = new CategoryPage(driver);
         categoryPage.waitCheckoutPage();
         //check item photo
-        Assert.assertTrue(categoryPage.elementIsDisplayed(categoryPage.itemPicture));
+        Assert.assertTrue(categoryPage.elementIsDisplayed(categoryPage.findElementById(ApplicationCommonElements.ITEM_NAME)));
         //check item name
         Assert.assertArrayEquals(
                 "Name is correct",
                 ApplicationLocalization.PRODUCT_NAME.toCharArray(),
-                categoryPage.getElementArrayText(categoryPage.itemTitle));
+                categoryPage.getElementArrayText(categoryPage.findElementById(ApplicationCommonElements.ITEM_NAME)));
         //check item price
         Assert.assertArrayEquals(
                 ApplicationLocalization.PRODUCT_PRICE.toCharArray(),
-                categoryPage.getElementArrayText(categoryPage.itemPrice));
+                categoryPage.getElementArrayText(categoryPage.findElementByClass(ApplicationCommonElements.ITEM_PRICE)));
 
     }
 

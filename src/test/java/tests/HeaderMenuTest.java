@@ -50,12 +50,33 @@ public class HeaderMenuTest extends BaseTest {
         Assert.assertTrue(new HeaderFooterMenu(driver).shopName.isDisplayed());
     }
     @Test
-    public void TwitterTest(){
+    public void TwitterTest() throws InterruptedException {
         new HeaderFooterMenu(driver)
                 .sckrollPagetoSoshialIcon(SoshialNetworks.TWITTER)
-                .clickOnSochialNetwork(SoshialNetworks.TWITTER);
+                .clickOnSochialNetwork(SoshialNetworks.TWITTER)
+                .switchToWindow();
         Assert.assertEquals("correct switch to Twitter",
                 ApplicationConstans.TWITTER_SWITCH,
+                driver.getCurrentUrl());
+    }
+    @Test
+    public void FacebookTest() throws InterruptedException {
+        new HeaderFooterMenu(driver)
+                .sckrollPagetoSoshialIcon(SoshialNetworks.FACEBOOK)
+                .clickOnSochialNetwork(SoshialNetworks.FACEBOOK)
+                .switchToWindow();
+        Assert.assertEquals("correct switch to Facebook",
+                ApplicationConstans.FACEBOOK_SWITCH,
+                driver.getCurrentUrl());
+    }
+    @Test
+    public void LinkednTest() throws InterruptedException {
+        new HeaderFooterMenu(driver)
+                .sckrollPagetoSoshialIcon(SoshialNetworks.LINKEDIN)
+                .clickOnSochialNetwork(SoshialNetworks.LINKEDIN)
+                .switchToWindow();
+        Assert.assertEquals("correct switch to Linkedin",
+                ApplicationConstans.LINKEDN_SWITCH,
                 driver.getCurrentUrl());
     }
 

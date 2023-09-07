@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+
+import static java.lang.Thread.sleep;
+
 public class HeaderFooterMenu extends BasePage {
     public HeaderFooterMenu(WebDriver driver) {
         super(driver);
@@ -51,6 +55,12 @@ public class HeaderFooterMenu extends BasePage {
     }
     public HeaderFooterMenu sckrollPagetoSoshialIcon(SoshialNetworks soshials){
         scrollScrinToElement(clickSoshials(soshials));
+        return new HeaderFooterMenu(driver);
+    }
+    public HeaderFooterMenu switchToWindow() throws InterruptedException {
+        ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+        sleep(3000);
         return new HeaderFooterMenu(driver);
     }
 

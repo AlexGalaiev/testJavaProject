@@ -9,4 +9,6 @@ public class ApplicationConstans {
     public static final String PERFOMANCE_USER = "performance_glitch_user";
     public static final String EXTERNAL_SITE_LINK = "https://saucelabs.com/";
     public static final String TWITTER_SWITCH = "https://twitter.com/saucelabs";
+    public static final String FACEBOOK_SWITCH = "https://www.facebook.com/saucelabs";
+    public static final String LINKEDN_SWITCH = "https://www.linkedin.com/company/sauce-labs/";
 }
